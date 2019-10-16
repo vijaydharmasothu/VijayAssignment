@@ -1,0 +1,53 @@
+﻿@model ContactManagement.ViewModels.HomeViewModel
+
+@{
+@Model.Title
+}
+
+<p>
+
+    <div>
+        @Html.ActionLink("Insert", "Insert", "Home")
+
+    </div>
+
+</p>
+
+<p>
+    <table border="1">
+        <tr>
+            <th>First Name </th>
+            <th>Last Name </th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Status</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        @if (Model.Contact != null)
+        {
+            @foreach (var contact in Model.Contact)
+            {
+                <tr>
+                    <td>@contact.FisrtName</td>
+                    <td>@contact.LattName</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.PhoneNumber</td>
+                    <td>@contact.Status</td>
+                    <td>
+                        @Html.ActionLink("Update", "Update", "Home", new { contactId = contact.ContactId })
+
+                    </td>
+                    <td>
+                        <input type="submit" value="Delete"
+                               onclick="location.href='@Url.Action("Delete", "Home", new { contactId = contact.ContactId })'" />
+                    </td>
+
+                </tr>
+            }
+        }
+
+    </table>
+
+</p>
+
+

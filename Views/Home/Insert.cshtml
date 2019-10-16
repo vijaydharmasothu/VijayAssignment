@@ -1,0 +1,60 @@
+﻿@model ContactManagement.Models.Contact
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+</head>
+<body>
+
+    <h4>Contact</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-controller="home" asp-action="Insert" method="post">
+
+                <div asp-validation-summary="ModelOnly">
+                    <span style="color:red;">* All fields are Mandatory</span>
+                </div>               
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" style="margin:10px">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <label class="control-label">Fisrt Name</label>
+                    @Html.TextBoxFor(model => model.FisrtName)
+                    <span asp-validation-for="FisrtName" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin:10px">
+                    <label class="control-label">Last Name</label>
+                    @Html.TextBoxFor(model => model.LattName)
+                    <span asp-validation-for="LattName" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin:10px">
+                    <label class="control-label">Email</label>
+                    @Html.TextBoxFor(model => model.Email)
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin:10px">
+                    <label class="control-label">Phone Number</label>
+                    @Html.TextBoxFor(model => model.PhoneNumber)
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin:10px">
+                    <label class="control-label" style="">Status</label>
+                    @Html.TextBoxFor(model => model.Status)
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin:30px">
+                    <input type="submit" value="Insert" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
